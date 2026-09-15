@@ -1,0 +1,57 @@
+{% extends "booking_base.html" %}
+
+{% block booking %}
+<h2>Choose Rooms</h2>
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    {{ form.num_2s.label}}
+    {{ form.num_2s() }}
+    {% for error in form.num_2s.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.num_3s.label}}
+    {{ form.num_3s() }}
+    {% for error in form.num_3s.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+    
+    {{ form.num_1d.label}}
+    {{ form.num_1d() }}
+    {% for error in form.num_1d.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+    
+    {{ form.num_2d.label}}
+    {{ form.num_2d() }}
+    {% for error in form.num_2d.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+    
+    {{ form.num_1d1s.label}}
+    {{ form.num_1d1s() }}
+    {% for error in form.num_1d1s.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.submit() }}
+</form>
+<div class="prices">
+    <p>2 Singles Price: €{{ price_2s }}/room/night</p>
+    <p>3 Singles Price: €{{ price_3s }}/room/night</p>
+    <p>1 Double Price: €{{ price_1d }}/room/night</p>
+    <p>2 Doubles Price: €{{ price_2d }}/room/night</p>
+    <p>Double + Single Price: €{{ price_1d1s }}/room/night</p>
+</div>
+{% endblock %}

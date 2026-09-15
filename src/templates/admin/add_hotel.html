@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    <h2 class="details">Details</h2>
+    {{ form.located_in.label}}
+    {{ form.located_in() }}
+    {% for error in form.located_in.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.hotel_name.label}}
+    {{ form.hotel_name() }}
+    {% for error in form.hotel_name.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.rating.label}}
+    {{ form.rating() }}
+    {% for error in form.rating.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    <h2 class="prices">Prices (30-999)</h2>
+    {{ form.price_2s.label}}
+    {{ form.price_2s() }}
+    {% for error in form.price_2s.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.price_3s.label}}
+    {{ form.price_3s() }}
+    {% for error in form.price_3s.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.price_1d.label}}
+    {{ form.price_1d() }}
+    {% for error in form.price_1d.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.price_2d.label}}
+    {{ form.price_2d() }}
+    {% for error in form.price_2d.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.price_1d1s.label}}
+    {{ form.price_1d1s() }}
+    {% for error in form.price_1d1s.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    <h2 class="availability">Availability</h2>
+    {{ form.available_2s.label}}
+    {{ form.available_2s() }}
+    {% for error in form.available_2s.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.available_3s.label}}
+    {{ form.available_3s() }}
+    {% for error in form.available_3s.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.available_1d.label}}
+    {{ form.available_1d() }}
+    {% for error in form.available_1d.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.available_2d.label}}
+    {{ form.available_2d() }}
+    {% for error in form.available_2d.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.available_1d1s.label}}
+    {{ form.available_1d1s() }}
+    {% for error in form.available_1d1s.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.submit() }}
+</form>
+{{ message }}
+<p><a href="{{ url_for('hotel_directory') }}">Go to Hotel Directory</a></p>
+{% endblock %}

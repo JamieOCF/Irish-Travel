@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<table>
+    <tr>
+        <th>Airline ID</th>
+        <th>Airline</th>
+        <th>Rating</th>
+    </tr>
+    {% for airline in airlines %}
+    <tr>
+        <td>{{ airline["airline_id"] }} </td>
+        <td>{{ airline["airline_name"] }} </td>
+        <td>{{ airline["airline_rating"] }} </td>
+        <td><a href="{{url_for('remove_airline', airline_id=airline['airline_id'])}}"><img src="{{ url_for('static', filename='bin.png') }}" alt="Remove airline" title="Remove airline {{airline['airline_id']}}"></a></td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="{{ url_for('add_airline')}}">Add airline</a></p>
+{% endblock %}

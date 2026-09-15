@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    <h2 class="details">Details</h2>
+    {{ form.airline.label}}
+    {{ form.airline() }}
+    {% for error in form.airline.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.from_city.label}}
+    {{ form.from_city() }}
+    {% for error in form.from_city.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.to_city.label}}
+    {{ form.to_city() }}
+    {% for error in form.to_city.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.duration.label}}
+    {{ form.duration() }}
+    {% for error in form.duration.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    <h2 class="prices">Prices (5-999)</h2>
+    {{ form.price_eco.label}}
+    {{ form.price_eco() }}
+    {% for error in form.price_eco.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.price_bus.label}}
+    {{ form.price_bus() }}
+    {% for error in form.price_bus.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.price_fc.label}}
+    {{ form.price_fc() }}
+    {% for error in form.price_fc.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    <h2 class="availability">Availability</h2>
+    {{ form.available_eco.label}}
+    {{ form.available_eco() }}
+    {% for error in form.available_eco.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.available_bus.label}}
+    {{ form.available_bus() }}
+    {% for error in form.available_bus.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.available_fc.label}}
+    {{ form.available_fc() }}
+    {% for error in form.available_fc.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.submit() }}
+</form>
+{{ message }}
+<p><a href="{{ url_for('route_directory') }}">Go to Route Directory</a></p>
+{% endblock %}

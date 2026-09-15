@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<table>
+    <tr>
+        <th>Route ID</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Duration</th>
+        <th>Airline</th>
+        <th>Prices</th>
+        <th>Availability</th>
+    </tr>
+    {% for route in routes %}
+    <tr>
+        <td>{{ route["route_id"] }} </td>
+        <td>{{ route["from_city"] }} </td>
+        <td>{{ route["to_city"] }} </td>
+        <td>{{ route["duration"] }}</td>
+        <td>{{ route["airline_name"] }}</td>
+        <td>{{ route["price_eco"] }} / {{ route["price_bus"] }} / {{ route["price_fc"] }}</td>
+        <td>{{ route["available_eco"] }} / {{ route["available_bus"] }} / {{ route["available_fc"] }}</td>
+        <td><a href="{{url_for('remove_route', route_id=route['route_id'])}}"><img src="{{ url_for('static', filename='bin.png') }}" alt="Remove route" title="Remove route {{route['route_id']}}"></a></td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="{{ url_for('add_route')}}">Add route</a></p>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "booking_base.html" %}
+
+{% block booking %}
+<h2>Choose Airline</h2>
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    {{ form.airline.label}}
+    {{ form.airline() }}
+    {% for error in form.airline.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.submit() }}
+</form>
+{% endblock %}

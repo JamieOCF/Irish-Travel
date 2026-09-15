@@ -1,0 +1,22 @@
+{% extends "booking_base.html" %}
+
+{% block booking %}
+<h2>Choose Dates</h2>
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    {{ form.from_date.label}}
+    {{ form.from_date() }}
+    {% for error in form.from_date.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.to_date.label}}
+    {{ form.to_date() }}
+    {% for error in form.to_date.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.submit() }}
+</form>
+{% endblock %}

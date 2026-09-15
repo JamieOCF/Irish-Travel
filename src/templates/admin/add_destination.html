@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    <h2 class="details">Details</h2>
+    {{ form.city_name.label}}
+    {{ form.city_name() }}
+    {% for error in form.city_name.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.country.label}}
+    {{ form.country() }}
+    {% for error in form.country.errors %}
+        {{ error }}
+    {% endfor %}
+    
+    <br />
+
+    {{ form.submit() }}
+</form>
+{{ message }}
+<p><a href="{{ url_for('destination_directory') }}">Go to Destination Directory</a></p>
+{% endblock %}

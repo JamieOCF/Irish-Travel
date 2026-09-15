@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<div class="details">
+    <h2>Booking Details</h2>
+    {% if session["booking"]["from_date"] != None and session["booking"]["to_date"] != None  %}
+        <h3>Dates/Location</h3>
+        <p class="dates">Dates: {{ session["booking"]["from_date"]}} &rarr; {{session["booking"]["to_date"]}}</p>
+    {% endif %}
+
+
+    {% if session["booking"]["destination"] != None %}
+        <p class="destination">{{ session["booking"]["destination"]}} </p>
+    {% endif %}
+
+
+    {% if session["booking"]["flight"] != {} %}
+        <h3>Flights</h3>
+        {% if session["booking"]["flight"]["from_city"] != None and session["booking"]["flight"]["to_city"] != None %}
+            <p class="route">{{ session["booking"]["flight"]["from_city"] }} &rarr; {{ session["booking"]["flight"]["to_city"] }}</p>
+        {% endif %}
+
+        {% if session["booking"]["flight"]["airline"] != None %}
+            <p class="airline">{{ session["booking"]["flight"]["airline"] }} </p>
+        {% endif %}
+
+        {% if session["booking"]["flight"]["tickets"] != {} %}
+            {% if session["booking"]["flight"]["tickets"]["num_eco_tix"] != None %}
+                <p class="num_eco_tix">Economy Tickets: {{ session["booking"]["flight"]["tickets"]["num_eco_tix"] }}</p>
+            {% endif %}
+
+            {% if session["booking"]["flight"]["tickets"]["num_bus_tix"] != None %}
+                <p class="num_bus_tix">Business Tickets: {{ session["booking"]["flight"]["tickets"]["num_bus_tix"] }}</p>
+            {% endif %}
+
+            {% if session["booking"]["flight"]["tickets"]["num_fc_tix"] != None %}
+                <p class="num_fc_tix">First Class Tickets: {{ session["booking"]["flight"]["tickets"]["num_fc_tix"] }}</p>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    {% if session["booking"]["hotel"] != {} %}
+        <h3>Hotel</h3>
+        {% if session["booking"]["hotel"]["hotel_name"] != None %}
+            <p class="hotel_name">{{ session["booking"]["hotel"]["hotel_name"] }} </p>
+        {% endif %}
+
+        {% if session["booking"]["hotel"]["rooms"] != {} %}
+            {% if session["booking"]["hotel"]["rooms"]["num_2s_rooms"] != None %}
+                <p class="num_2s_rooms">2 Singles Room(s): {{ session["booking"]["hotel"]["rooms"]["num_2s_rooms"] }}</p>
+            {% endif %}
+
+            {% if session["booking"]["hotel"]["rooms"]["num_3s_rooms"] != None %}
+                <p class="num_3s_rooms">3 Singles Room(s): {{ session["booking"]["hotel"]["rooms"]["num_3s_rooms"] }}</p>
+            {% endif %}
+
+            {% if session["booking"]["hotel"]["rooms"]["num_1d_rooms"] != None %}
+                <p class="num_1d_rooms">1 Double Room(s): {{ session["booking"]["hotel"]["rooms"]["num_1d_rooms"] }}</p>
+            {% endif %}
+
+            {% if session["booking"]["hotel"]["rooms"]["num_2d_rooms"] != None %}
+                <p class="num_2d_rooms">2 Doubles Room(s): {{ session["booking"]["hotel"]["rooms"]["num_2d_rooms"] }}</p>
+            {% endif %}
+
+            {% if session["booking"]["hotel"]["rooms"]["num_1d1s_rooms"] != None %}
+                <p class="num_1d1s_rooms">Double + Single Room(s): {{ session["booking"]["hotel"]["rooms"]["num_1d1s_rooms"] }}</p>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    <h3>Cost</h3>
+    <p class="cost">Cost: {{ session["booking"]["cost"]}} </p>
+</div>
+<div class="current">
+    {% block booking %}
+    {% endblock%}
+</div>
+{% endblock %}

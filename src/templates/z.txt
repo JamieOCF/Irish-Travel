@@ -1,0 +1,2 @@
+Hotels.html: <a href="{{ url_for('hotel', hotel_id=hotel['hotel_id']) }}"> </a>
+Destinations.html: <a href="{{ url_for('destination', destination_id=destination['destination_id']) }}">

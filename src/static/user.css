@@ -1,0 +1,30 @@
+#account {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "heading heading" 
+                         "bookings account_update";
+}
+
+#account h2 {
+    grid-area: heading;
+    text-align: center;
+}
+#all_bookings_table {
+    grid-area: bookings;
+}
+.account_update {
+    grid-area: account_update;
+}
+
+table, tr, td, th{
+    border: 1px solid black;
+}
+  
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}

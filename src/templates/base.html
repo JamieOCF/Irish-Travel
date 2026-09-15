@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IrishTravel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename=style) }}">
+    <link rel="icon" href="{{ url_for('static', filename='globe.ico') }}">
+</head>
+<body>
+    <header>
+        <nav class="left">
+            <a href="{{ url_for('choose_dates')}}"><p>Book Now!</p></a>
+        </nav>
+        <h1><a href="{{ url_for('home_page') }}">IrishTravel</a></h1>
+        <nav>
+            <a href="{{ url_for('destinations') }}"><p>Destinations</p></a>
+            <a href="{{ url_for('hotels') }}"><p>Hotels</p></a>
+            {% if g.user_id %}
+                {% if g.is_admin %}
+                <a href="{{ url_for('admin') }}"><p>Admin</p></a>
+                <a href="{{ url_for('user') }}"><p>{{ g.user_id }}</p></a>
+
+                {% elif g.is_main_admin %}
+                <a href="{{ url_for('admin') }}"><p>Admin</p></a>
+
+                {% else %}
+                <a href="{{ url_for('user') }}"><p>{{ g.user_id }}</p></a>
+                
+                {% endif %}
+            <a href="{{ url_for('logout') }}"><p>Logout</p></a>
+            {% else %}
+            <a href="{{ url_for('login') }}"><p>Login/Register</p></a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% block main_content %}
+        {% endblock %}
+    </main>
+    <footer>
+        &copy; James (/Jamie) O'Callaghan Foley
+        <br />
+        Credit: Kadir Avşar, Alex Azabache, Ali Müftüoğulları
+        <br />
+        <a href="https://www.flaticon.com/free-icons/earth" title="earth icons">Earth icons created by Freepik - Flaticon</a>
+        <br />
+        <a href="https://www.flaticon.com/free-icons/trash-can" title="trash can icons">Trash can icons created by kliwir art - Flaticon</a>
+    </footer>
+</body>
+</html>

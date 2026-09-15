@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+<!-- Insertions
+        hotels
+        destinations
+        routes (Insert opposite direction as well)
+         -->
+
+{% block main_content %}
+<section class="amendments">
+    <h2>Make Amendments to the Service</h2>
+
+    <div class="destinations">
+        <h3>Destinations</h3>
+        <a href="{{ url_for('add_destination')}}">Add Destination</a>
+        <a href="{{ url_for('destination_directory')}}">Destination Directory</a>
+    </div>
+
+    <div class="airlines">
+        <h3>Airlines</h3>
+        <a href="{{ url_for('add_airline')}}">Add Airline</a>
+        <a href="{{ url_for('airline_directory')}}">Airline Directory</a>
+    </div>
+
+    <div class="hotels">
+        <h3>Hotels</h3>
+        <a href="{{ url_for('add_hotel')}}">Add Hotel</a>
+        <a href="{{ url_for('hotel_directory')}}">Hotel Directory</a>
+    </div>
+
+    <div class="routes">
+        <h3>Routes</h3>
+        <a href="{{ url_for('add_route')}}">Add Route</a>
+        <a href="{{ url_for('route_directory')}}">Route Directory</a>
+    </div>
+</section>
+<section class="admin">
+    <h2>Admin Status</h2>
+
+    <div class="make_admin">
+        <a href="{{ url_for('make_admin')}}">Make Admin</a>
+        <a href="{{ url_for('remove_admin')}}">Remove Admin</a>
+    </div>
+</section>
+{% endblock %}

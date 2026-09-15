@@ -1,0 +1,41 @@
+{% extends "booking_base.html" %}
+
+{% block booking %}
+<h2>Choose Seats</h2>
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    {{ form.num_eco_tix.label}}
+    {{ form.num_eco_tix() }}
+    {% for error in form.num_eco_tix.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.num_bus_tix.label}}
+    {{ form.num_bus_tix() }}
+    {% for error in form.num_bus_tix.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+    
+    {{ form.num_fc_tix.label}}
+    {{ form.num_fc_tix() }}
+    {% for error in form.num_fc_tix.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.submit() }}
+</form>
+<div class="prices">
+    <p>Economy Price: €{{ price_eco }}/ticket</p>
+    <p>Business Price: €{{ price_bus }}/ticket</p>
+    <p>First Class Price: €{{ price_fc }}/ticket</p>
+</div>
+<p>Flight Duration: {{ flight_hrs }}hrs {{ flight_mins }}mins</p>
+<p><small>{{ message }}</small></p>
+{% endblock %}

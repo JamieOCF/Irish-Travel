@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    <h2 class="a">Confirm Deletion</h2>
+    {{ form.confirm.label}}
+    {{ form.confirm() }}
+    {% for error in form.confirm.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    <h2 class="a">Delete/Transfer Routes</h2>
+    {{ form.transfer_to.label}}
+    {{ form.transfer_to() }}
+    {% for error in form.transfer_to.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.submit() }}
+</form>
+<p><strong>{{ message }}</strong></p>
+{% endblock %}

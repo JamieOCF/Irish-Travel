@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<h2>
+    All Destinations
+</h2>
+<div>
+    {% for destination in destinations %}
+    <div>
+        <p>{{ destination['city_name'] }}</p>
+        <p>From €{{ destination['price'] }}pp</p> <!-- Routes pricing-->
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

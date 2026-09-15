@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<section id="account">
+    <h2>Your Account</h2>
+
+    <section id="account_update">
+        <h3>Account Details</h3>
+        <div class="username">
+            <p>Username: {{g.user_id}}</p>
+            <p><a href="{{url_for('change_username')}}">Change Username</a></p>
+        </div>
+        <div class="password">
+            <p><a href="{{url_for('change_password')}}">Change Password</a></p>
+        </div>
+    </section>
+
+    <section id="all_bookings_table">
+        <h3>All Your Bookings</h3>
+        {% if all_bookings != None %}
+        <table>
+            <caption></caption>
+            <tr>
+                <th>Dates</th>
+                <th>Flight</th>
+                <th>Flight Costs</th>
+                <th>Flight Duration</th>
+                <th>Hotel</th>
+                <th>Hotel Cost</th>
+            </tr>
+            {% for trip in all_bookings %}
+            <tr>
+                <td>From {{ trip["dep_date"] }} to {{ trip["dep_date"] }}</td>
+                <td>From {{ trip["from_city"] }} to {{ trip["to_city"] }}</td>
+                <td>€{{ trip["flight_cost"] }}</td>
+                <td>{{ trip["duration"] }}</td>
+                <td>{{ trip["hotel_name"] }}</td>
+                <td>€{{ trip["hotel_cost"] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </section>
+    
+</section>
+{% endblock %}
+

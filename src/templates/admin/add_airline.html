@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    <h2 class="details">Details</h2>
+    {{ form.airline_name.label}}
+    {{ form.airline_name() }}
+    {% for error in form.airline_name.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.airline_rating.label}}
+    {{ form.airline_rating() }}
+    {% for error in form.airline_rating.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.submit() }}
+</form>
+{{ message }}
+<p><a href="{{ url_for('airline_directory') }}">Go to Airline Directory</a></p>
+{% endblock %}

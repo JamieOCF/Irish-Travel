@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<h2>
+    All Hotels
+</h2>
+<div>
+    {% for hotel in hotels %}
+    <p>{{ hotel['hotel_name'] }} in {{ hotel['city'] }}</p> <!--  Located_in -> Destinations  -->
+    <p>From {{ hotel['price_2s'] }} per night</p>
+    {% endfor %}
+</div>
+{% endblock %}

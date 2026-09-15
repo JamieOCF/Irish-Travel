@@ -1,0 +1,18 @@
+{% extends "booking_base.html" %}
+
+{% block booking %}
+<h2>Choose Hotel</h2>
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    {{ form.hotel.label}}
+    {{ form.hotel() }}
+    {% for error in form.hotel.errors %}
+        {{ error }}
+    {% endfor %}
+
+    <br />
+
+    {{ form.submit() }}
+</form>
+{% endblock %}
