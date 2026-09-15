@@ -1,0 +1,133 @@
+/* =====================================================================
+   Admin dashboard
+   Panels sit in a wrapping row at their natural content height (no
+   forced equal-height stretching), so a single-link panel like
+   Companies stays compact next to a taller one like Bookings.
+   ===================================================================== */
+
+.admin-dashboard {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-8) var(--space-16);
+}
+
+.admin-dashboard-header {
+  margin-bottom: var(--space-8);
+}
+
+.admin-dashboard-header h1 {
+  margin-bottom: var(--space-2);
+}
+
+.admin-dashboard-header p {
+  margin: 0;
+}
+
+.admin-dashboard-header a {
+  margin: 0;
+
+  text-decoration: none;
+}
+
+.admin-dashboard-header a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-link);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.admin-dashboard-header a::before {
+  content: "\2192";
+  font-size: 0.9em;
+  transition: transform var(--transition-fast);
+}
+
+.admin-dashboard-header a:hover {
+  color: var(--text-link-hover);
+}
+
+.admin-dashboard-header a:hover::before {
+  transform: translateX(3px);
+}
+
+.admin-panel-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+
+.adminPanel {
+  flex: 1 1 240px;
+  max-width: 280px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+}
+
+.adminPanel-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.adminPanel-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-link);
+  flex-shrink: 0;
+}
+
+.adminPanel h2 {
+  font-size: var(--text-lg);
+  margin: 0;
+}
+
+.adminPanel-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.adminPanel-links a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-link);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.adminPanel-links a::before {
+  content: "\2192";
+  font-size: 0.9em;
+  transition: transform var(--transition-fast);
+}
+
+.adminPanel-links a:hover {
+  color: var(--text-link-hover);
+}
+
+.adminPanel-links a:hover::before {
+  transform: translateX(3px);
+}
+
+@media (max-width: 40rem) {
+  .admin-panel-grid {
+    flex-direction: column;
+  }
+
+  .adminPanel {
+    max-width: none;
+    width: 100%;
+  }
+}

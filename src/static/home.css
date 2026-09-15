@@ -1,0 +1,138 @@
+/* =====================================================================
+   Landing page — hero, feature grid
+   Uses tokens from styles.css; nothing here redefines colour/type values.
+   ===================================================================== */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-header);
+  color: var(--text-on-brand);
+}
+
+.hero-inner {
+  position: relative;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-16) var(--space-8);
+  display: grid;
+  grid-template-columns: minmax(0, 32rem) 1fr;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.hero h1 {
+  color: var(--text-on-brand);
+  font-size: var(--text-3xl);
+  margin: 0 0 var(--space-4);
+}
+
+.hero p {
+  color: var(--color-green-300);
+  font-size: var(--text-lg);
+  max-width: 34ch;
+  margin: 0 0 var(--space-6);
+}
+
+/* Decorative route line: three stops on a dashed path, echoing the
+   routes-between-cities model the booking flow is built on. Purely
+   ambient — hidden on narrow screens and for reduced-motion users
+   it simply renders static. */
+.hero-route {
+  justify-self: end;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  color: var(--color-green-300);
+}
+
+.hero-route .route-path {
+  stroke-dasharray: 6 8;
+  animation: route-dash 6s linear infinite;
+}
+
+.hero-route .route-stop {
+  fill: var(--accent);
+}
+
+@keyframes route-dash {
+  to {
+    stroke-dashoffset: -56;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-route .route-path {
+    animation: none;
+  }
+}
+
+@media (max-width: 56rem) {
+  .hero-route {
+    display: none;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 40rem) {
+  .hero-inner {
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .hero h1 {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* ---- Feature grid ---- */
+.feature-grid {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-16) var(--space-8);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.feature-card {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.feature-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--color-green-700);
+}
+
+.feature-card h3 {
+  margin: 0;
+}
+
+.feature-card p {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.feature-link {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+.feature-link:hover {
+  color: var(--text-link-hover);
+}
+
+@media (max-width: 56rem) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+    padding: var(--space-12) var(--space-4);
+  }
+}

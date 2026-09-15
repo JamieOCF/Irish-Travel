@@ -1,0 +1,204 @@
+/* =====================================================================
+   Companies page — company list + add-company form
+   Scoped via main:has(> .companies) rather than a page wrapper class,
+   so no changes to companies.html are required.
+   ===================================================================== */
+
+:root {
+  --color-error: #b3261e;
+  --color-error-bg: #fbe9e7;
+}
+
+[data-theme="dark"] {
+  --color-error: #ff8a80;
+  --color-error-bg: rgba(255, 138, 128, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-error: #ff8a80;
+    --color-error-bg: rgba(255, 138, 128, 0.08);
+  }
+}
+
+main:has(> .companies) {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-8) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* ---- Company list ---- */
+.companies {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+}
+
+.companies h2 {
+  margin-bottom: var(--space-4);
+}
+
+.companies table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.companies td {
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+
+.companies tr:last-child td {
+  border-bottom: none;
+}
+
+.companies tr:hover td {
+  background-color: var(--bg-surface-dim);
+}
+
+.companies td:first-child {
+  font-weight: 600;
+}
+
+.companies td:nth-child(2) {
+  color: var(--text-muted);
+}
+
+.companies td:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+/* ---- Add company form ---- */
+.add_companies {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+  max-width: 28rem;
+}
+
+.add_companies h2 {
+  margin-bottom: var(--space-4);
+}
+
+.add_companies form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.add_companies .company_name,
+.add_companies .transport_mode {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.add_companies label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.add_companies input[type="text"],
+.add_companies select {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  transition: border-color var(--transition-fast);
+}
+
+.add_companies input[type="text"]:hover,
+.add_companies select:hover {
+  border-color: var(--text-link);
+}
+
+.add_companies .company_name p,
+.add_companies .transport_mode p {
+  margin: 0;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  font-size: var(--text-xs);
+}
+
+.add_companies .submit {
+  margin-top: var(--space-2);
+}
+
+.add_companies .submit input[type="submit"] {
+  width: 100%;
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent);
+  color: var(--accent-text);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.add_companies .submit input[type="submit"]:hover {
+  background-color: var(--accent-hover);
+}
+
+
+.companies th {
+    padding: var(--space-3) var(--space-2);
+    text-align: left;
+}
+
+th:last-child {
+    text-align: right;
+}
+
+
+
+/* Return Button */
+.return {
+  margin: 0;
+  text-decoration: none;
+}
+
+.return{
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-link);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.return::before {
+  content: "\2190";
+  font-size: 0.9em;
+  transition: transform var(--transition-fast);
+}
+
+.return:hover {
+  color: var(--text-link-hover);
+}
+
+.return:hover::before {
+  transform: translateX(3px);
+}

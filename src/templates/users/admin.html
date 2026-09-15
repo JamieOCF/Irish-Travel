@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<div class="admin-dashboard">
+    <div class="admin-dashboard-header">
+        <h1>Admin dashboard</h1>
+        <a href="{{ url_for ('guide') }}">Guide</a>
+    </div>
+
+    <div class="admin-panel-grid">
+        <div class="adminPanel" id="bookingsPanel">
+            <div class="adminPanel-heading">
+                <svg class="adminPanel-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    <path d="M14 7v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="1.5 2.5"/>
+                </svg>
+                <h2>Bookings</h2>
+            </div>
+            <nav class="adminPanel-links">
+                <a href="{{ url_for ('bookings') }}">View bookings</a>
+                <a href="{{ url_for ('tickets') }}">Review tickets</a>
+                <a href="{{ url_for ('wishlists') }}">User wishlists</a>
+            </nav>
+        </div>
+
+        <div class="adminPanel" id="destinationsPanel">
+            <div class="adminPanel-heading">
+                <svg class="adminPanel-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <h2>Destinations</h2>
+            </div>
+            <nav class="adminPanel-links">
+                <a href="{{ url_for ('manage_destinations') }}">Manage destinations</a>
+            </nav>
+        </div>
+
+        <div class="adminPanel" id="hotelsPanel">
+            <div class="adminPanel-heading">
+                <svg class="adminPanel-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M3 19v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 19h18M3 19v2M21 19v2M5 10V7a2 2 0 0 1 2-2h3v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h2>Hotels</h2>
+            </div>
+            <nav class="adminPanel-links">
+                <a href="{{ url_for ('manage_hotels') }}">Manage hotels</a>
+                <a href="{{ url_for ('room_types') }}">Manage room types</a>
+                <a href="{{ url_for ('rooms') }}">Manage available rooms</a>
+            </nav>
+        </div>
+
+        <div class="adminPanel" id="routesPanel">
+            <div class="adminPanel-heading">
+                <svg class="adminPanel-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M4 17h1.5M18.5 17H20M6 17V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8M6 17h12M7.5 20a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16.5 20a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h2>Routes</h2>
+            </div>
+            <nav class="adminPanel-links">
+                <a href="{{ url_for ('manage_routes') }}">Manage routes</a>
+                <a href="{{ url_for ('fare_classes') }}">Manage fare classes</a>
+                <a href="{{ url_for ('rides') }}">Manage available rides</a>
+            </nav>
+        </div>
+
+        <div class="adminPanel" id="companiesPanel">
+            <div class="adminPanel-heading">
+                <svg class="adminPanel-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 21v-8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v8M4 21h16M7 7h2M11 7h2M7 11h2M11 11h2M7 15h2M11 15h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <h2>Companies</h2>
+            </div>
+            <nav class="adminPanel-links">
+                <a href="{{ url_for ('companies') }}">Manage companies</a>
+            </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}

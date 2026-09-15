@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block main_content %}
+<div class="companies-header">
+    <h1>Companies</h1>
+    <a class="return" href="{{ url_for ('admin') }}">Admin Panel</a>
+</div>
+
+<div class="companies">
+    <h2>All Companies</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Transport Mode</th>
+            <th>Rating</th>
+        </tr>
+        {% for company in allcompanies %}
+            <tr>
+                <td>{{ company['company_name'] }}</td>
+                <td>{{ company['transport_mode'] }}</td>
+                <td>{{ company['rating'] }} ({{ company['ratings'] }})</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+<div class="add_companies">
+    <h2>Add Companies</h2>
+    <form action="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="company_name">
+            {{ form.company_name.label}}
+            {{ form.company_name() }}
+            <br />
+            {% for error in form.company_name.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+        <div class="transport_mode">
+            {{ form.transport_mode.label}}
+            {{ form.transport_mode() }}
+            <br />
+            {% for error in form.transport_mode.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+        <div class="submit">
+            {{ form.submit() }}
+        </div>
+    </form>
+</div>
+
+<!-- <div class="remove_companies">
+    <h2>Remove Companies</h2>
+</div> -->
+{% endblock %}

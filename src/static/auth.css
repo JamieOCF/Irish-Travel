@@ -1,0 +1,151 @@
+/* =====================================================================
+   Auth pages — login.html, register.html
+   Built entirely on tokens from styles.css. login.html/register.html
+   both reuse the same two class names (.login, .register) for whichever
+   div holds the form vs. the "switch page" prompt, so these rules key
+   off structure (:has(form)) rather than page identity.
+   ===================================================================== */
+
+:root {
+  --color-error: #b3261e;
+  --color-error-bg: #fbe9e7;
+}
+
+[data-theme="dark"] {
+  --color-error: #ff8a80;
+  --color-error-bg: rgba(255, 138, 128, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-error: #ff8a80;
+    --color-error-bg: rgba(255, 138, 128, 0.08);
+  }
+}
+
+main:has(> .login),
+main:has(> .register) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-16) var(--space-4);
+}
+
+/* ---- The div holding the form ---- */
+.login:has(form),
+.register:has(form) {
+  width: 100%;
+  max-width: 26rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-8);
+}
+
+.login:has(form) h2,
+.register:has(form) h2 {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.login:has(form) form,
+.register:has(form) form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.login .username,
+.login .password,
+.register .username,
+.register .password,
+.register .password2 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.login label,
+.register label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.login input[type="text"],
+.login input[type="password"],
+.register input[type="text"],
+.register input[type="password"] {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  transition: border-color var(--transition-fast);
+}
+
+.login input[type="text"]:hover,
+.login input[type="password"]:hover,
+.register input[type="text"]:hover,
+.register input[type="password"]:hover {
+  border-color: var(--text-link);
+}
+
+/* Field-level validation messages from form.<field>.errors */
+.login .username p,
+.login .password p,
+.register .username p,
+.register .password p,
+.register .password2 p {
+  margin: 0;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  font-size: var(--text-xs);
+}
+
+.login .submit,
+.register .submit {
+  margin-top: var(--space-2);
+}
+
+.login .submit input[type="submit"],
+.register .submit input[type="submit"] {
+  width: 100%;
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent);
+  color: var(--accent-text);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.login .submit input[type="submit"]:hover,
+.register .submit input[type="submit"]:hover {
+  background-color: var(--accent-hover);
+}
+
+/* ---- The div holding the "switch page" prompt ---- */
+.login:not(:has(form)),
+.register:not(:has(form)) {
+  width: 100%;
+  max-width: 26rem;
+  text-align: center;
+  margin-top: var(--space-6);
+}
+
+.login:not(:has(form)) p,
+.register:not(:has(form)) p {
+  margin: 0 0 var(--space-1);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
